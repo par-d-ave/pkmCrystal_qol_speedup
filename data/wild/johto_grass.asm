@@ -1125,25 +1125,25 @@ JohtoGrassWildMons:
 	def_grass_wildmons SILVER_CAVE_ROOM_3
 	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
 	; morn
-	db 51, GOLBAT
-	db 48, ONIX
-	db 48, GRAVELER
+	db 50, CYNDAQUIL
+	db 50, TOTODILE
+	db 50, CHIKORITA
 	db 50, URSARING
 	db 20, LARVITAR
 	db 15, LARVITAR
 	db 20, PUPITAR
 	; day
-	db 51, GOLBAT
-	db 48, ONIX
-	db 48, GRAVELER
+	db 50, CYNDAQUIL
+	db 50, TOTODILE
+	db 50, CHIKORITA
 	db 50, URSARING
 	db 20, LARVITAR
 	db 15, LARVITAR
 	db 20, PUPITAR
 	; nite
-	db 51, GOLBAT
-	db 48, ONIX
-	db 48, GRAVELER
+	db 50, CYNDAQUIL
+	db 50, TOTODILE
+	db 50, CHIKORITA
 	db 49, GOLBAT
 	db 45, GOLDUCK
 	db 53, GOLBAT
