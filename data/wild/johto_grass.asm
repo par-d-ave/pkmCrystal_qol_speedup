@@ -1689,25 +1689,25 @@ JohtoGrassWildMons:
 	db 42, PONYTA
 	db 42, ARBOK
 	db 44, RAPIDASH
-	db 41, DODUO
-	db 43, DODRIO
-	db 43, DODRIO
+	db 41, MAREEP
+	db 43, REMORAID
+	db 43, GIRAFARIG
 	; day
 	db 41, TANGELA
 	db 42, PONYTA
 	db 42, ARBOK
 	db 44, RAPIDASH
-	db 41, DODUO
-	db 43, DODRIO
-	db 43, DODRIO
+	db 41, MAREEP
+	db 43, REMORAID
+	db 43, GIRAFARIG
 	; nite
 	db 41, TANGELA
 	db 42, POLIWHIRL
 	db 42, GOLBAT
 	db 44, POLIWHIRL
-	db 40, GOLBAT
-	db 44, GOLBAT
-	db 44, GOLBAT
+	db 41, MAREEP
+	db 43, REMORAID
+	db 43, GIRAFARIG
 	end_grass_wildmons
 
 	db -1 ; end
