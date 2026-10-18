@@ -190,74 +190,74 @@ Kurt1:
 	end
 
 .GiveLevelBall:
-	checkflag ENGINE_KURT_MAKING_BALLS
-	iftrue KurtMakingBallsScript
-	writetext KurtsHouseKurtJustFinishedYourBallText
-	promptbutton
-	verbosegiveitemvar LEVEL_BALL, VAR_KURT_APRICORNS
-	iffalse .NoRoomForBall
-	clearevent EVENT_GAVE_KURT_RED_APRICORN
-	sjump ._ThatTurnedOutGreat
+    checkflag ENGINE_KURT_MAKING_BALLS
+    iftrue KurtMakingBallsScript
+    writetext KurtsHouseKurtJustFinishedYourBallText
+    promptbutton
+    verbosegiveitem LEVEL_BALL, 99
+    iffalse .NoRoomForBall
+    clearevent EVENT_GAVE_KURT_RED_APRICORN
+    sjump ._ThatTurnedOutGreat
 
 .GiveLureBall:
-	checkflag ENGINE_KURT_MAKING_BALLS
-	iftrue KurtMakingBallsScript
-	writetext KurtsHouseKurtJustFinishedYourBallText
-	promptbutton
-	verbosegiveitemvar LURE_BALL, VAR_KURT_APRICORNS
-	iffalse .NoRoomForBall
-	clearevent EVENT_GAVE_KURT_BLU_APRICORN
-	sjump ._ThatTurnedOutGreat
+    checkflag ENGINE_KURT_MAKING_BALLS
+    iftrue KurtMakingBallsScript
+    writetext KurtsHouseKurtJustFinishedYourBallText
+    promptbutton
+    verbosegiveitem LURE_BALL, 99
+    iffalse .NoRoomForBall
+    clearevent EVENT_GAVE_KURT_BLU_APRICORN
+    sjump ._ThatTurnedOutGreat
 
 .GiveMoonBall:
-	checkflag ENGINE_KURT_MAKING_BALLS
-	iftrue KurtMakingBallsScript
-	writetext KurtsHouseKurtJustFinishedYourBallText
-	promptbutton
-	verbosegiveitemvar MOON_BALL, VAR_KURT_APRICORNS
-	iffalse .NoRoomForBall
-	clearevent EVENT_GAVE_KURT_YLW_APRICORN
-	sjump ._ThatTurnedOutGreat
+    checkflag ENGINE_KURT_MAKING_BALLS
+    iftrue KurtMakingBallsScript
+    writetext KurtsHouseKurtJustFinishedYourBallText
+    promptbutton
+    verbosegiveitem MOON_BALL, 99
+    iffalse .NoRoomForBall
+    clearevent EVENT_GAVE_KURT_YLW_APRICORN
+    sjump ._ThatTurnedOutGreat
 
 .GiveFriendBall:
-	checkflag ENGINE_KURT_MAKING_BALLS
-	iftrue KurtMakingBallsScript
-	writetext KurtsHouseKurtJustFinishedYourBallText
-	promptbutton
-	verbosegiveitemvar FRIEND_BALL, VAR_KURT_APRICORNS
-	iffalse .NoRoomForBall
-	clearevent EVENT_GAVE_KURT_GRN_APRICORN
-	sjump ._ThatTurnedOutGreat
+    checkflag ENGINE_KURT_MAKING_BALLS
+    iftrue KurtMakingBallsScript
+    writetext KurtsHouseKurtJustFinishedYourBallText
+    promptbutton
+    verbosegiveitem FRIEND_BALL, 99
+    iffalse .NoRoomForBall
+    clearevent EVENT_GAVE_KURT_GRN_APRICORN
+    sjump ._ThatTurnedOutGreat
 
 .GiveFastBall:
-	checkflag ENGINE_KURT_MAKING_BALLS
-	iftrue KurtMakingBallsScript
-	writetext KurtsHouseKurtJustFinishedYourBallText
-	promptbutton
-	verbosegiveitemvar FAST_BALL, VAR_KURT_APRICORNS
-	iffalse .NoRoomForBall
-	clearevent EVENT_GAVE_KURT_WHT_APRICORN
-	sjump ._ThatTurnedOutGreat
+    checkflag ENGINE_KURT_MAKING_BALLS
+    iftrue KurtMakingBallsScript
+    writetext KurtsHouseKurtJustFinishedYourBallText
+    promptbutton
+    verbosegiveitem FAST_BALL, 99
+    iffalse .NoRoomForBall
+    clearevent EVENT_GAVE_KURT_WHT_APRICORN
+    sjump ._ThatTurnedOutGreat
 
 .GiveHeavyBall:
-	checkflag ENGINE_KURT_MAKING_BALLS
-	iftrue KurtMakingBallsScript
-	writetext KurtsHouseKurtJustFinishedYourBallText
-	promptbutton
-	verbosegiveitemvar HEAVY_BALL, VAR_KURT_APRICORNS
-	iffalse .NoRoomForBall
-	clearevent EVENT_GAVE_KURT_BLK_APRICORN
-	sjump ._ThatTurnedOutGreat
+    checkflag ENGINE_KURT_MAKING_BALLS
+    iftrue KurtMakingBallsScript
+    writetext KurtsHouseKurtJustFinishedYourBallText
+    promptbutton
+    verbosegiveitem HEAVY_BALL, 99
+    iffalse .NoRoomForBall
+    clearevent EVENT_GAVE_KURT_BLK_APRICORN
+    sjump ._ThatTurnedOutGreat
 
 .GiveLoveBall:
-	checkflag ENGINE_KURT_MAKING_BALLS
-	iftrue KurtMakingBallsScript
-	writetext KurtsHouseKurtJustFinishedYourBallText
-	promptbutton
-	verbosegiveitemvar LOVE_BALL, VAR_KURT_APRICORNS
-	iffalse .NoRoomForBall
-	clearevent EVENT_GAVE_KURT_PNK_APRICORN
-	sjump ._ThatTurnedOutGreat
+    checkflag ENGINE_KURT_MAKING_BALLS
+    iftrue KurtMakingBallsScript
+    writetext KurtsHouseKurtJustFinishedYourBallText
+    promptbutton
+    verbosegiveitem LOVE_BALL, 99
+    iffalse .NoRoomForBall
+    clearevent EVENT_GAVE_KURT_PNK_APRICORN
+    sjump ._ThatTurnedOutGreat
 
 .CanGiveGSBallToKurt:
 	checkevent EVENT_GAVE_GS_BALL_TO_KURT
