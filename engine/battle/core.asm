@@ -6125,11 +6125,15 @@ LoadEnemyMon:
 	jr .UpdateDVs
 
 .GenerateDVs:
-; Generate new random DVs
+; 20% de probabilidad para Shiny perfecto legal ($FAAA), 80% para Normal perfecto ($FFFF)
 	call BattleRandom
-	ld b, a
-	call BattleRandom
-	ld c, a
+	cp 52                ; 52 / 256 ≈ 20.3% de probabilidad
+	jr nc, .perfect_normal
+	ld bc, $faaa         ; Shiny perfecto (Ataque 15, Def/Vel/Esp 10)
+	jp .UpdateDVs
+
+.perfect_normal:
+	ld bc, $ffff         ; Todos los DVs al máximo (15 en todo)
 
 .UpdateDVs:
 ; Input DVs in register bc
@@ -6215,7 +6219,7 @@ LoadEnemyMon:
 ; Try again if length < 1024 mm (i.e. if HIGH(length) < 3 feet)
 	ld a, [wMagikarpLength]
 	cp HIGH(1024)
-	jr c, .GenerateDVs ; try again
+	jp c, .GenerateDVs ; try again
 
 ; Finally done with DVs
 
