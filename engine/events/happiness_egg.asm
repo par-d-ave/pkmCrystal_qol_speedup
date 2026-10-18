@@ -194,6 +194,10 @@ DayCareStep::
 	ret nz
 
 	call Random
+	srl a
+	srl a
+	srl a
+	inc a
 	ld [hl], a
 	callfar CheckBreedmonCompatibility
 	ld a, [wBreedingCompatibility]

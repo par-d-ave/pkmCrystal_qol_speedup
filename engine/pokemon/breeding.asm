@@ -182,7 +182,13 @@ DoEggStep::
 	ret z
 	cp EGG
 	jr nz, .next
-	dec [hl]
+	ld a, [hl]
+	sub 10
+	jr nc, .no_underflow
+	xor a
+.no_underflow
+	ld [hl], a
+	and a
 	jr nz, .next
 	ld a, 1
 	and a
