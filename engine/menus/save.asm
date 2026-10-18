@@ -7,12 +7,9 @@ SaveMenu:
 	ld hl, WouldYouLikeToSaveTheGameText
 	call SaveTheGame_yesorno
 	jr nz, .refused
-	call AskOverwriteSaveFile
-	jr c, .refused
 	call PauseGameLogic
 	call _SavingDontTurnOffThePower
 	call ResumeGameLogic
-	call ExitMenu
 	and a
 	ret
 
@@ -110,7 +107,7 @@ MoveMonWOMail_InsertMon_SaveGame:
 	call ResumeGameLogic
 	ld de, SFX_SAVE
 	call PlaySFX
-	ld c, 24
+	ld c, 2
 	call DelayFrames
 	ret
 
@@ -241,7 +238,7 @@ _SavingDontTurnOffThePower:
 SavedTheGame:
 	call _SaveGameData
 	; wait 32 frames
-	ld c, 32
+	ld c, 2
 	call DelayFrames
 	; copy the original text speed setting to the stack
 	ld a, [wOptions]
@@ -259,7 +256,7 @@ SavedTheGame:
 	call WaitPlaySFX
 	call WaitSFX
 	; wait 30 frames
-	ld c, 30
+	ld c, 2
 	call DelayFrames
 	ret
 
@@ -353,7 +350,7 @@ SavingDontTurnOffThePower:
 	pop af
 	ld [wOptions], a
 	; Wait for 16 frames
-	ld c, 16
+	ld c, 2
 	call DelayFrames
 	ret
 
