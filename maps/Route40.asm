@@ -89,8 +89,6 @@ MonicaScript:
 	opentext
 	checkevent EVENT_GOT_SHARP_BEAK_FROM_MONICA
 	iftrue .Monday
-	readvar VAR_WEEKDAY
-	ifnotequal MONDAY, .NotMonday
 	checkevent EVENT_MET_MONICA_OF_MONDAY
 	iftrue .MetMonica
 	writetext MeetMonicaText

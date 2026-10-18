@@ -21,12 +21,6 @@ BlackthornCityFlypointCallback:
 	endcallback
 
 BlackthornCitySantosCallback:
-	readvar VAR_WEEKDAY
-	ifequal SATURDAY, .SantosAppears
-	disappear BLACKTHORNCITY_SANTOS
-	endcallback
-
-.SantosAppears:
 	appear BLACKTHORNCITY_SANTOS
 	endcallback
 
@@ -90,8 +84,6 @@ SantosScript:
 	opentext
 	checkevent EVENT_GOT_SPELL_TAG_FROM_SANTOS
 	iftrue .Saturday
-	readvar VAR_WEEKDAY
-	ifnotequal SATURDAY, .NotSaturday
 	checkevent EVENT_MET_SANTOS_OF_SATURDAY
 	iftrue .MetSantos
 	writetext MeetSantosText
@@ -100,14 +92,14 @@ SantosScript:
 .MetSantos:
 	writetext SantosGivesGiftText
 	promptbutton
-	verbosegiveitem SPELL_TAG
+	verbosegiveitem SPELL_TAG, 99
 	iffalse .Done
 	setevent EVENT_GOT_SPELL_TAG_FROM_SANTOS
 	writetext SantosGaveGiftText
 	waitbutton
 	closetext
 	end
-
+	
 .Saturday:
 	writetext SantosSaturdayText
 	waitbutton

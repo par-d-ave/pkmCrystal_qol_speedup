@@ -186,8 +186,6 @@ WesleyScript:
 	opentext
 	checkevent EVENT_GOT_BLACKBELT_FROM_WESLEY
 	iftrue WesleyWednesdayScript
-	readvar VAR_WEEKDAY
-	ifnotequal WEDNESDAY, WesleyNotWednesdayScript
 	checkevent EVENT_MET_WESLEY_OF_WEDNESDAY
 	iftrue .MetWesley
 	writetext MeetWesleyText

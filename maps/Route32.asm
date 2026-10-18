@@ -33,12 +33,6 @@ Route32Noop3Scene:
 	end
 
 Route32FriedaCallback:
-	readvar VAR_WEEKDAY
-	ifequal FRIDAY, .FriedaAppears
-	disappear ROUTE32_FRIEDA
-	endcallback
-
-.FriedaAppears:
 	appear ROUTE32_FRIEDA
 	endcallback
 
@@ -454,8 +448,6 @@ FriedaScript:
 	opentext
 	checkevent EVENT_GOT_POISON_BARB_FROM_FRIEDA
 	iftrue .Friday
-	readvar VAR_WEEKDAY
-	ifnotequal FRIDAY, .NotFriday
 	checkevent EVENT_MET_FRIEDA_OF_FRIDAY
 	iftrue .MetFrieda
 	writetext MeetFriedaText
@@ -464,7 +456,7 @@ FriedaScript:
 .MetFrieda:
 	writetext FriedaGivesGiftText
 	promptbutton
-	verbosegiveitem POISON_BARB
+	verbosegiveitem POISON_BARB, 99
 	iffalse .Done
 	setevent EVENT_GOT_POISON_BARB_FROM_FRIEDA
 	writetext FriedaGaveGiftText

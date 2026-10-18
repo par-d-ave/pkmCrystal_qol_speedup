@@ -24,12 +24,6 @@ Route36Noop2Scene:
 	end
 
 Route36ArthurCallback:
-	readvar VAR_WEEKDAY
-	ifequal THURSDAY, .ArthurAppears
-	disappear ROUTE36_ARTHUR
-	endcallback
-
-.ArthurAppears:
 	appear ROUTE36_ARTHUR
 	endcallback
 
@@ -318,8 +312,6 @@ ArthurScript:
 	opentext
 	checkevent EVENT_GOT_HARD_STONE_FROM_ARTHUR
 	iftrue .AlreadyGotStone
-	readvar VAR_WEEKDAY
-	ifnotequal THURSDAY, ArthurNotThursdayScript
 	checkevent EVENT_MET_ARTHUR_OF_THURSDAY
 	iftrue .MetArthur
 	writetext MeetArthurText
@@ -328,7 +320,7 @@ ArthurScript:
 .MetArthur:
 	writetext ArthurGivesGiftText
 	promptbutton
-	verbosegiveitem HARD_STONE
+	verbosegiveitem HARD_STONE, 99
 	iffalse .BagFull
 	setevent EVENT_GOT_HARD_STONE_FROM_ARTHUR
 	writetext ArthurGaveGiftText
