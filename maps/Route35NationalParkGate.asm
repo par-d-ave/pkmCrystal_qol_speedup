@@ -34,16 +34,7 @@ Route35NationalParkBugContestIsRunningScript:
 	endcallback
 
 Route35NationalParkGateCheckIfContestAvailableCallback:
-	readvar VAR_WEEKDAY
-	ifequal TUESDAY, .SetContestOfficer
-	ifequal THURSDAY, .SetContestOfficer
-	ifequal SATURDAY, .SetContestOfficer
-	checkflag ENGINE_BUG_CONTEST_TIMER
-	iftrue Route35NationalParkBugContestIsRunningScript
-	disappear ROUTE35NATIONALPARKGATE_OFFICER1
-	appear ROUTE35NATIONALPARKGATE_YOUNGSTER
-	appear ROUTE35NATIONALPARKGATE_OFFICER2
-	endcallback
+	sjump .SetContestOfficer
 
 .SetContestOfficer:
 	appear ROUTE35NATIONALPARKGATE_OFFICER1
