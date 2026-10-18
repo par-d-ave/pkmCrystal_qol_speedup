@@ -1,4 +1,10 @@
 PrintLetterDelay::
+; Instant text when FAST is selected.
+        ld a, [wOptions]
+        and TEXT_DELAY_MASK
+        cp TEXT_DELAY_FAST
+        ret z
+
 ; Wait before printing the next letter.
 
 ; The text speed setting in wOptions is actually a frame count:
