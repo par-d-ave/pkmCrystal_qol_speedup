@@ -9,7 +9,7 @@ BattleCommand_BeatUp:
 	jr nz, .next_mon
 
 	ld c, 20
-	call DelayFrames
+	call BattleDelayFrames
 	xor a
 	ld [wPlayerRolloutCount], a
 	ld [wCurBeatUpPartyMon], a

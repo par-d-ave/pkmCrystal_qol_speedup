@@ -1643,14 +1643,14 @@ BattleCommand_CheckHit:
 	ret z
 
 	ld c, 40
-	call DelayFrames
+	call BattleDelayFrames
 
 ; 'protecting itself!'
 	ld hl, ProtectingItselfText
 	call StdBattleTextbox
 
 	ld c, 40
-	call DelayFrames
+	call BattleDelayFrames
 
 	ld a, 1
 	and a
@@ -5013,12 +5013,12 @@ BattleCommand_ForceSwitch:
 	ld [wBattleAnimParam], a
 	call AnimateCurrentMove
 	ld c, $14
-	call DelayFrames
+	call BattleDelayFrames
 	hlcoord 1, 0
 	lb bc, 4, 10
 	call ClearBox
 	ld c, 20
-	call DelayFrames
+	call BattleDelayFrames
 	ld a, [wOTPartyCount]
 	ld b, a
 	ld a, [wCurOTMon]
@@ -5108,12 +5108,12 @@ BattleCommand_ForceSwitch:
 	ld [wBattleAnimParam], a
 	call AnimateCurrentMove
 	ld c, 20
-	call DelayFrames
+	call BattleDelayFrames
 	hlcoord 9, 7
 	lb bc, 5, 11
 	call ClearBox
 	ld c, 20
-	call DelayFrames
+	call BattleDelayFrames
 	ld a, [wPartyCount]
 	ld b, a
 	ld a, [wCurBattleMon]
@@ -5161,7 +5161,7 @@ BattleCommand_ForceSwitch:
 	ld [wBattleAnimParam], a
 	call AnimateCurrentMove
 	ld c, 20
-	call DelayFrames
+	call BattleDelayFrames
 	pop af
 
 	ld hl, FledInFearText
@@ -5879,7 +5879,7 @@ BattleCommand_Paralyze:
 	call CheckSubstituteOpp
 	jr nz, .failed
 	ld c, 30
-	call DelayFrames
+	call BattleDelayFrames
 	call AnimateCurrentMove
 	ld a, $1
 	ldh [hBGMapMode], a

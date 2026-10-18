@@ -43,7 +43,7 @@ DoBattle:
 
 .wild
 	ld c, 40
-	call DelayFrames
+	call BattleDelayFrames
 
 .player_2
 	call LoadTilemapToTempTilemap
@@ -1134,7 +1134,7 @@ ResidualDamage:
 .fainted
 	call RefreshBattleHuds
 	ld c, 20
-	call DelayFrames
+	call BattleDelayFrames
 	xor a
 	ret
 
@@ -2026,7 +2026,7 @@ HandleEnemyMonFaint:
 	ld a, $1
 	ldh [hBGMapMode], a
 	ld c, 60
-	call DelayFrames
+	call BattleDelayFrames
 
 	ld a, [wBattleMode]
 	dec a
@@ -2374,7 +2374,7 @@ WinTrainerBattle:
 
 	call BattleWinSlideInEnemyTrainerFrontpic
 	ld c, 40
-	call DelayFrames
+	call BattleDelayFrames
 
 	ld a, [wBattleType]
 	cp BATTLETYPE_CANLOSE
@@ -2393,7 +2393,7 @@ WinTrainerBattle:
 .mobile
 	call BattleWinSlideInEnemyTrainerFrontpic
 	ld c, 40
-	call DelayFrames
+	call BattleDelayFrames
 	ld c, $4 ; win
 	farcall Mobile_PrintOpponentBattleMessage
 	ret
@@ -2401,7 +2401,7 @@ WinTrainerBattle:
 .battle_tower
 	call BattleWinSlideInEnemyTrainerFrontpic
 	ld c, 40
-	call DelayFrames
+	call BattleDelayFrames
 	call EmptyBattleTextbox
 	ld c, BATTLETOWERTEXT_LOSS_TEXT
 	farcall BattleTowerText
@@ -2931,7 +2931,7 @@ LostBattle:
 	call BattleWinSlideInEnemyTrainerFrontpic
 
 	ld c, 40
-	call DelayFrames
+	call BattleDelayFrames
 
 	ld a, [wDebugFlags]
 	bit DEBUG_BATTLE_F, a
@@ -2948,7 +2948,7 @@ LostBattle:
 	call BattleWinSlideInEnemyTrainerFrontpic
 
 	ld c, 40
-	call DelayFrames
+	call BattleDelayFrames
 
 	call EmptyBattleTextbox
 	ld c, BATTLETOWERTEXT_WIN_TEXT
@@ -3000,7 +3000,7 @@ LostBattle:
 	call BattleWinSlideInEnemyTrainerFrontpic
 
 	ld c, 40
-	call DelayFrames
+	call BattleDelayFrames
 
 	ld c, $3 ; lost
 	farcall Mobile_PrintOpponentBattleMessage
@@ -5250,7 +5250,7 @@ BattleMonEntrance:
 	call WithdrawMonText
 
 	ld c, 50
-	call DelayFrames
+	call BattleDelayFrames
 
 	ld hl, wPlayerSubStatus4
 	res SUBSTATUS_RAGE, [hl]
@@ -5284,7 +5284,7 @@ BattleMonEntrance:
 
 PassedBattleMonEntrance:
 	ld c, 50
-	call DelayFrames
+	call BattleDelayFrames
 
 	hlcoord 9, 7
 	lb bc, 5, 11
@@ -5780,7 +5780,7 @@ CheckPlayerHasUsableMoves:
 	ld hl, BattleText_MonHasNoMovesLeft
 	call StdBattleTextbox
 	ld c, 60
-	call DelayFrames
+	call BattleDelayFrames
 	xor a
 	ret
 
@@ -7310,7 +7310,7 @@ GiveExperiencePoints:
 	ld bc, 4
 	predef PrintTempMonStats
 	ld c, 30
-	call DelayFrames
+	call BattleDelayFrames
 	call WaitPressAorB_BlinkCursor
 	call SafeLoadTempTilemapToTilemap
 	xor a ; PARTYMON
@@ -9080,7 +9080,7 @@ BattleStartMessage:
 	call WaitSFX
 
 	ld c, 20
-	call DelayFrames
+	call BattleDelayFrames
 
 	farcall Battle_GetTrainerName
 
