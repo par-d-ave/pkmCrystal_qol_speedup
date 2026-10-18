@@ -127,20 +127,30 @@ _AnimateHPBar:
 	ret
 
 ShortAnim_UpdateVariables:
-	ld hl, wCurHPBarPixels
-	ld a, [wNewHPBarPixels]
-	cp [hl]
-	jr nz, .not_finished
-	scf
-	ret
+    ld hl, wCurHPBarPixels
+    ld a, [wNewHPBarPixels]
+    cp [hl]
+    jr nz, .not_finished
+    scf
+    ret
 
 .not_finished
-	ld a, c
-	add [hl]
-	ld [hl], a
-	call ShortHPBar_CalcPixelFrame
-	and a
-	ret
+    ; Punto medio: avanzamos 2 píxeles por iteración (ágil pero visible y fluido)
+    ld a, [hl]
+    add 2
+    ld c, a
+    ld a, [wNewHPBarPixels]
+    cp c
+    jr nc, .store_pixels
+    ; Si nos pasamos del objetivo, lo clavamos exactamente en el final
+    ld c, a
+
+.store_pixels
+    ld a, c
+    ld [hl], a
+    call ShortHPBar_CalcPixelFrame
+    and a
+    ret
 
 LongAnim_UpdateVariables:
 .loop
@@ -287,7 +297,6 @@ HPBarAnim_BGMapUpdate:
 	ldh a, [hCGB]
 	and a
 	jr nz, .cgb
-	call DelayFrame
 	call DelayFrame
 	ret
 
