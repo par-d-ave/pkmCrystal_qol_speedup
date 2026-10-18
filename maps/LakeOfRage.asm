@@ -32,12 +32,6 @@ LakeOfRageFlypointCallback:
 	endcallback
 
 LakeOfRageWesleyCallback:
-	readvar VAR_WEEKDAY
-	ifequal WEDNESDAY, .WesleyAppears
-	disappear LAKEOFRAGE_WESLEY
-	endcallback
-
-.WesleyAppears:
 	appear LAKEOFRAGE_WESLEY
 	endcallback
 
@@ -202,7 +196,7 @@ WesleyScript:
 .MetWesley:
 	writetext WesleyGivesGiftText
 	promptbutton
-	verbosegiveitem BLACKBELT_I
+	verbosegiveitem BLACKBELT_I, 99
 	iffalse WesleyDoneScript
 	setevent EVENT_GOT_BLACKBELT_FROM_WESLEY
 	writetext WesleyGaveGiftText
