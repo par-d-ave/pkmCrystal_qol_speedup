@@ -7569,51 +7569,41 @@ AnimateExpBar:
 	call WaitSFX
 	ld de, SFX_EXP_BAR
 	call PlaySFX
-	ld c, 10
+	ld c, 2             ; Reducido de 10 a 2 fotogramas de pausa inicial
 	call DelayFrames
 	pop bc
 	ret
 
 .LoopBarAnimation:
-	ld d, 3
-	dec b
+	ld d, 4             ; Incrementamos la velocidad de llenado por ciclo (salta de a 4 píxeles)
 .anim_loop
-	inc b
+	ld a, b
+	add d
+	cp c
+	jr nc, .set_max     ; Si nos pasamos del objetivo, lo clavamos al máximo
+	ld b, a
+	jr .draw_bar
+
+.set_max
+	ld b, c
+
+.draw_bar
 	push bc
-	push de
 	hlcoord 17, 11
 	call PlaceExpBar
-	pop de
+	pop bc
 	ld a, $1
 	ldh [hBGMapMode], a
-	ld c, d
+	
+	ld c, 1             ; Espera mínima de 1 solo fotograma para mantener fluidez visual sin demorarse
 	call DelayFrames
 	xor a
 	ldh [hBGMapMode], a
-	pop bc
-	ld a, c
-	cp b
-	jr z, .end_animation
-	inc b
-	push bc
-	push de
-	hlcoord 17, 11
-	call PlaceExpBar
-	pop de
-	ld a, $1
-	ldh [hBGMapMode], a
-	ld c, d
-	call DelayFrames
-	xor a
-	ldh [hBGMapMode], a
-	dec d
-	jr nz, .min_number_of_frames
-	ld d, 1
-.min_number_of_frames
-	pop bc
-	ld a, c
-	cp b
+
+	ld a, b
+	cp c
 	jr nz, .anim_loop
+
 .end_animation
 	ld a, $1
 	ldh [hBGMapMode], a
