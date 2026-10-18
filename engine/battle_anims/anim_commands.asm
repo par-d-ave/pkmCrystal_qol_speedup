@@ -99,6 +99,8 @@ BattleAnimRunScript:
 
 RunBattleAnimScript:
 	call ClearBattleAnims
+	xor a
+	ld [wBattleAnimSpeedTick], a
 
 .playframe
 	call RunBattleAnimCommand
@@ -128,7 +130,7 @@ RunBattleAnimScript:
 	jr nz, .find
 
 .not_rollout
-	call BattleAnimDelayFrame
+	call BattleAnimSpeedDelay
 
 .done
 	ld a, [wBattleAnimFlags]
@@ -1488,3 +1490,18 @@ BattleAnim_UpdateOAM_All:
 
 .done
 	ret
+
+DEF BATTLE_ANIM_SPEEDUP EQU 19 ; ticks de animación por frame mostrado
+
+BattleAnimSpeedDelay:
+; Cuenta atrás: muestra un frame en el primer tick y luego uno cada
+; BATTLE_ANIM_SPEEDUP ticks de animación.
+	ld hl, wBattleAnimSpeedTick
+	ld a, [hl]
+	and a
+	jr z, .show
+	dec [hl]
+	ret
+.show
+	ld [hl], BATTLE_ANIM_SPEEDUP - 1
+	jp BattleAnimDelayFrame

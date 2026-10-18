@@ -3722,6 +3722,8 @@ wSurfWaveBGEffect:: ds $40
 wSurfWaveBGEffectEnd::
 ENDU
 
+wBattleAnimSpeedTick:: db
+
 
 SECTION "Mobile RAM", WRAMX
 
