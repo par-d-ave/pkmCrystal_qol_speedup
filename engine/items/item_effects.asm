@@ -725,11 +725,11 @@ BallMultiplierFunctionTable:
 	dbw ULTRA_BALL,  UltraBallMultiplier
 	dbw GREAT_BALL,  GreatBallMultiplier
 	dbw SAFARI_BALL, SafariBallMultiplier ; Safari Ball, leftover from RBY
-	dbw HEAVY_BALL,  HeavyBallMultiplier
+	dbw HEAVY_BALL,  UltraBallMultiplier
 	dbw LEVEL_BALL,  LevelBallMultiplier
 	dbw LURE_BALL,   LureBallMultiplier
 	dbw FAST_BALL,   FastBallMultiplier
-	dbw MOON_BALL,   MoonBallMultiplier
+	dbw MOON_BALL,   UltraBallMultiplier
 	dbw LOVE_BALL,   LoveBallMultiplier
 	dbw PARK_BALL,   ParkBallMultiplier
 	db -1 ; end
