@@ -48,53 +48,12 @@ GoldenrodUndergroundCheckBasementKeyCallback:
 .LockBasementDoor:
 	changeblock 18, 6, $3d ; locked door
 	endcallback
+	
 GoldenrodUndergroundCheckDayOfWeekCallback:
 	disappear GOLDENRODUNDERGROUND_OLDER_HAIRCUT_BROTHER
 	appear GOLDENRODUNDERGROUND_YOUNGER_HAIRCUT_BROTHER
-	readvar VAR_WEEKDAY
-	ifequal MONDAY, .Monday
-	ifequal TUESDAY, .Tuesday
-	ifequal WEDNESDAY, .Wednesday
-	ifequal THURSDAY, .Thursday
-	ifequal FRIDAY, .Friday
-	ifequal SATURDAY, .Saturday
-	; Sunday
-	disappear GOLDENRODUNDERGROUND_GRAMPS
-	appear GOLDENRODUNDERGROUND_GRANNY
-	endcallback
-
-.Monday:
-	disappear GOLDENRODUNDERGROUND_GRAMPS
-	checktime MORN
-	iffalse .NotMondayMorning
 	appear GOLDENRODUNDERGROUND_GRAMPS
-.NotMondayMorning:
 	disappear GOLDENRODUNDERGROUND_GRANNY
-	endcallback
-
-.Tuesday:
-	disappear GOLDENRODUNDERGROUND_GRAMPS
-	disappear GOLDENRODUNDERGROUND_GRANNY
-	endcallback
-
-.Wednesday:
-	disappear GOLDENRODUNDERGROUND_GRAMPS
-	disappear GOLDENRODUNDERGROUND_GRANNY
-	endcallback
-
-.Thursday:
-	disappear GOLDENRODUNDERGROUND_GRAMPS
-	disappear GOLDENRODUNDERGROUND_GRANNY
-	endcallback
-
-.Friday:
-	disappear GOLDENRODUNDERGROUND_GRAMPS
-	disappear GOLDENRODUNDERGROUND_GRANNY
-	endcallback
-
-.Saturday:
-	disappear GOLDENRODUNDERGROUND_GRAMPS
-	appear GOLDENRODUNDERGROUND_GRANNY
 	endcallback
 
 TrainerSupernerdEric:
