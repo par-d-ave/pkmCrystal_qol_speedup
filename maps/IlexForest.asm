@@ -427,13 +427,10 @@ IlexForestSignpost:
 	jumptext IlexForestSignpostText
 
 IlexForestShrineScript:
-	checkevent EVENT_FOREST_IS_RESTLESS
-	iftrue .ForestIsRestless
-	sjump .DontDoCelebiEvent
+	checkevent EVENT_FOUGHT_HO_OH
+	iffalse .DontDoCelebiEvent
+	sjump .AskCelebiEvent
 
-.ForestIsRestless:
-	checkitem GS_BALL
-	iftrue .AskCelebiEvent
 .DontDoCelebiEvent:
 	jumptext Text_IlexForestShrine
 
@@ -446,7 +443,7 @@ IlexForestShrineScript:
 	end
 
 .CelebiEvent:
-	takeitem GS_BALL
+	; takeitem GS_BALL
 	clearevent EVENT_FOREST_IS_RESTLESS
 	setevent EVENT_AZALEA_TOWN_KURT
 	disappear ILEXFOREST_LASS
