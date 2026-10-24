@@ -135,22 +135,31 @@ ShortAnim_UpdateVariables:
     ret
 
 .not_finished
-    ; Punto medio: avanzamos 2 píxeles por iteración (ágil pero visible y fluido)
-    ld a, [hl]
-    add 2
-    ld c, a
-    ld a, [wNewHPBarPixels]
-    cp c
-    jr nc, .store_pixels
-    ; Si nos pasamos del objetivo, lo clavamos exactamente en el final
-    ld c, a
-
-.store_pixels
-    ld a, c
-    ld [hl], a
-    call ShortHPBar_CalcPixelFrame
-    and a
-    ret
+	push bc
+	ld a, [wNewHPBarPixels]
+	ld b, a
+	ld a, [hl]
+	cp b
+	jr c, .increase    ; actual < objetivo (curación)
+; daño: bajar 2 px
+	sub 2
+	jr c, .clamp       ; underflow
+	cp b
+	jr nc, .store      ; aún >= objetivo
+.clamp
+	ld a, b            ; nos pasamos: clavar en el objetivo
+	jr .store
+.increase
+	add 2
+	cp b
+	jr c, .store       ; aún < objetivo
+	ld a, b            ; nos pasamos: clavar en el objetivo
+.store
+	ld [hl], a
+	pop bc
+	call ShortHPBar_CalcPixelFrame
+	and a
+	ret
 
 LongAnim_UpdateVariables:
 .loop
