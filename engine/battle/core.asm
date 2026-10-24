@@ -7595,15 +7595,13 @@ AnimateExpBar:
 	push bc
 	hlcoord 17, 11
 	call PlaceExpBar
-	pop bc
 	ld a, $1
 	ldh [hBGMapMode], a
-	
-	ld c, 1             ; Espera mínima de 1 solo fotograma para mantener fluidez visual sin demorarse
+	ld c, 1
 	call DelayFrames
 	xor a
 	ldh [hBGMapMode], a
-
+	pop bc
 	ld a, b
 	cp c
 	jr nz, .anim_loop
