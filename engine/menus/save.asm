@@ -7,9 +7,12 @@ SaveMenu:
 	ld hl, WouldYouLikeToSaveTheGameText
 	call SaveTheGame_yesorno
 	jr nz, .refused
+	call AskOverwriteSaveFile
+	jr c, .refused
 	call PauseGameLogic
 	call _SavingDontTurnOffThePower
 	call ResumeGameLogic
+	call ExitMenu
 	and a
 	ret
 
@@ -187,9 +190,6 @@ AskOverwriteSaveFile:
 	jr .erase
 
 .yoursavefile
-	ld hl, AlreadyASaveFileText
-	call SaveTheGame_yesorno
-	jr nz, .refused
 	jr .ok
 
 .erase
@@ -244,7 +244,7 @@ SavedTheGame:
 	ld a, [wOptions]
 	push af
 	; set text speed to medium
-	ld a, TEXT_DELAY_MED
+	ld a, TEXT_DELAY_FAST
 	ld [wOptions], a
 	; <PLAYER> saved the game!
 	ld hl, SavedTheGameText
@@ -341,7 +341,7 @@ SavingDontTurnOffThePower:
 	ld a, [wOptions]
 	push af
 	; Set the text speed to medium
-	ld a, TEXT_DELAY_MED
+	ld a, TEXT_DELAY_FAST
 	ld [wOptions], a
 	; SAVING... DON'T TURN OFF THE POWER.
 	ld hl, SavingDontTurnOffThePowerText

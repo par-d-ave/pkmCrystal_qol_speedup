@@ -1491,7 +1491,7 @@ BattleAnim_UpdateOAM_All:
 .done
 	ret
 
-DEF BATTLE_ANIM_SPEEDUP EQU 19 ; ticks de animación por frame mostrado
+DEF BATTLE_ANIM_SPEEDUP EQU 5 ; ticks de animación por frame mostrado
 
 BattleAnimSpeedDelay:
 ; Cuenta atrás: muestra un frame en el primer tick y luego uno cada
