@@ -6125,15 +6125,22 @@ LoadEnemyMon:
 	jr .UpdateDVs
 
 .GenerateDVs:
-; 20% de probabilidad para Shiny perfecto legal ($FAAA), 80% para Normal perfecto ($FFFF)
+; Generate new random DVs
 	call BattleRandom
-	cp 52                ; 52 / 256 ≈ 20.3% de probabilidad
+	ld b, a
+	call BattleRandom
+	ld c, a
+; Unown: DVs aleatorios (la letra depende de ellos)
+	ld a, [wTempEnemyMonSpecies]
+	cp UNOWN
+	jr z, .UpdateDVs
+	ld a, c
+	cp 52
 	jr nc, .perfect_normal
-	ld bc, $faaa         ; Shiny perfecto (Ataque 15, Def/Vel/Esp 10)
+	ld bc, $faaa
 	jp .UpdateDVs
-
 .perfect_normal:
-	ld bc, $ffff         ; Todos los DVs al máximo (15 en todo)
+	ld bc, $ffff
 
 .UpdateDVs:
 ; Input DVs in register bc
