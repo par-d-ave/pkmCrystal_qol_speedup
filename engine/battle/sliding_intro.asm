@@ -26,7 +26,7 @@ BattleIntroSlidingPics:
 .subfunction2
 	ld d, $90
 	ld e, $72
-	ld a, $48
+	ld a, $24
 	inc a
 .loop1
 	push af
@@ -39,6 +39,10 @@ BattleIntroSlidingPics:
 	call .subfunction5
 	inc e
 	inc e
+	inc e
+	inc e
+	dec d
+	dec d
 	dec d
 	dec d
 	pop af
@@ -61,6 +65,8 @@ BattleIntroSlidingPics:
 	ld c, $12 ; 18
 	ld de, OBJ_SIZE
 .loop3
+	dec [hl]
+	dec [hl]
 	dec [hl]
 	dec [hl]
 	add hl, de
