@@ -131,11 +131,6 @@ Route36NationalParkGateLeavingContestEarlyScript:
 	end
 
 Route36OfficerScriptContest:
-	readvar VAR_WEEKDAY
-	ifequal SUNDAY, _ContestNotOn
-	ifequal MONDAY, _ContestNotOn
-	ifequal WEDNESDAY, _ContestNotOn
-	ifequal FRIDAY, _ContestNotOn
 	faceplayer
 	opentext
 	checkflag ENGINE_DAILY_BUG_CONTEST

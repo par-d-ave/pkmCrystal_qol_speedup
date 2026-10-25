@@ -28,6 +28,10 @@ DoBattleTransition:
 	bit JUMPTABLE_EXIT_F, a
 	jr nz, .done
 	call BattleTransitionJumptable
+	ld a, [wJumptableIndex]
+	bit JUMPTABLE_EXIT_F, a
+	jr nz, .done
+	call BattleTransitionJumptable
 	call DelayFrame
 	jr .loop
 
