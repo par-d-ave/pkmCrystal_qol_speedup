@@ -536,24 +536,41 @@ CheckEncounterRoamMon:
 	jr nc, .DontEncounterRoamMon
 	and %00000011 ; Of that, a 3/4 chance.  Running total: 75/256, or around 29.3%.
 	jr z, .DontEncounterRoamMon
-	dec a ; 1/3 chance that it's Entei, 1/3 chance that it's Raikou
-; Compare its current location with yours
-	ld hl, wRoamMon1MapGroup
+	dec a ; 0 = Raikou, 1 = Entei, 2 = sin uso
+	cp 2
+	jr nc, .DontEncounterRoamMon
+; hl = inicio del roam_struct elegido
 	ld c, a
 	ld b, 0
+	ld hl, wRoamMon1Species
 	ld a, 7 ; length of the roam_struct
 	call AddNTimes
+; Sin iniciar o ya capturado: no aparece
+	ld a, [hl]
+	and a
+	jr z, .DontEncounterRoamMon
+; Mapa fijo: Raikou en Ruta 30, Entei en Ruta 29
+	ld a, c
+	and a
+	jr nz, .Entei
 	ld a, d
-	cp [hl]
+	cp GROUP_ROUTE_30
 	jr nz, .DontEncounterRoamMon
-	inc hl
 	ld a, e
-	cp [hl]
+	cp MAP_ROUTE_30
 	jr nz, .DontEncounterRoamMon
+	jr .Encounter
+
+.Entei:
+	ld a, d
+	cp GROUP_ROUTE_29
+	jr nz, .DontEncounterRoamMon
+	ld a, e
+	cp MAP_ROUTE_29
+	jr nz, .DontEncounterRoamMon
+
+.Encounter:
 ; We've decided to take on a beast, so stage its information for battle.
-	dec hl
-	dec hl
-	dec hl
 	ld a, [hli]
 	ld [wTempWildMonSpecies], a
 	ld a, [hl]
